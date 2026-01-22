@@ -41,7 +41,7 @@
         "price": "249.00",
         "sizes": ["S", "M", "L"],
         "images": [
-            "images/Accessories/jacket.jpg"
+            "images/Accessories/jacket.jpEg"
         ],
         "category": "jacket",
         "isTrending": true,
