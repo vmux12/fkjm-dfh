@@ -1,0 +1,38 @@
+<script>
+  const name = localStorage.getItem("order_name");
+  const phone = localStorage.getItem("order_phone");
+  const ville = localStorage.getItem("order_ville");
+  const size = localStorage.getItem("order_size");
+
+  // هنا كنجيبو total بشكل آمن
+  const total = parseFloat(localStorage.getItem("total price")) || 0;
+
+  const cart = JSON.parse(localStorage.getItem("order_cart")) || [];
+  const baseURL = "https://USERNAME.github.io/REPO_NAME/";
+
+  let cartText = "";
+  cart.forEach((item, index) => {
+    cartText += `${index + 1}) ${item.name} × ${item.quantity} - ${item.price} DH\n`;
+    cartText += `🔗 صورة المنتج: ${baseURL}${item.images[0]}\n\n`;
+  });
+
+  const message =
+`🛍️ *طلب جديد من SA FashionStyle*
+--------------------------------
+👤 *الاسم:* ${name}
+📞 *الهاتف:* ${phone}
+📍 *المدينة:* ${ville}
+📏 *المقاس:* ${size}
+💰 *المجموع:* ${total.toFixed(2)} DH
+
+📦 *المنتجات:*
+${cartText}
+
+📌 *ملاحظة:* غادي نتاصل بك لتأكيد الطلب ❤️
+`;
+
+  const whatsappNumber = "212772944387";
+  const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+
+  window.location.href = url;
+</script>
